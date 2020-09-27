@@ -56,7 +56,37 @@ defined on $\R$, then $\phi(t + t_0)$ is a solution of the IVP
 on $\R$. Is it still true if $f(x)$ is replaced by $f(t, x)$?
 
 \textit{Solution.}
-hey
+Let $\phi$ be a solution of~\eqref{eq:1-1}. Define
+$\tilde{\phi}(t) \coloneqq \phi(t + t_0)$. Then
+%
+\begin{equation}
+    \tilde{\phi}(0) = \phi(0 + t_0) = \phi(t_0) = x_0
+    \label{eq:1-3}
+\end{equation}
+%
+and
+%
+\begin{equation}
+    \tilde{\phi}^\prime(t) = \phi^\prime(t + t_0) = f(\phi(t + t_0)) = f(\tilde{\phi}(t))
+    \label{eq:1-4}
+\end{equation}
+%
+(the first equality comes from a trivial application of the chain rule). Hence
+we can conclude that $\tilde{\phi}$ satisfies~\eqref{eq:1-2}.
+
+However, if $f$ is dependent on $t$, then~\eqref{eq:1-3} would still hold but
+for~\eqref{eq:1-4} we would have, in general,
+%
+\begin{equation*}
+    \tilde{\phi}^\prime(t)
+        = \phi^\prime(t + t_0)
+        = f(t + t_0, \phi(t + t_0))
+        = f(t + t_0, \tilde{\phi}(t))
+        \neq f(t, \tilde{\phi}(t))
+        ,
+\end{equation*}
+%
+so $\tilde{\phi}$ would no longer solve the IVP.
 
 \newpage
 
@@ -71,7 +101,98 @@ hey
 defines a norm on $\R^n$.
 
 \textit{Solution.}
-hey
+The first property that norms $N$ must satisfy is that $N(x) \geq 0$ and
+$N(x) = 0$ if and only if $x = 0$. Quite trivially, we can see
+that $|\cdot|_1$, $|\cdot|_2$, and $|\cdot|_\infty$ are all non-negative
+and that $|0|_1 = |0|_2 = |0|_\infty = 0$. Now suppose $x \neq 0$ where $x \in \R^n$,
+and let $j$ be such that $x_j \neq 0$. Then we have
+%
+\begin{align*}
+    |x|_1 &= \sum_{i = 1}^n |x_i| \geq |x_j| > 0, \\
+    |x|_2 &= \sqrt{\sum_{i = 1}^n x_i^2} \geq \sqrt{x_j^2} > 0, \\
+    |x|_\infty &= \max_{1 \leq i \leq n} |x_i| \geq |x_j| > 0.
+\end{align*}
+%
+Hence for all three functions $|\cdot|$, we have that $|x| = 0$ if and only if $x = 0$.
+Therefore all thee functions satisfy the first property in the definition of a norm.
+
+The second property that norms must satisfy is that $N(x + y) \leq N(x) + N(y)$.
+Let $x, y \in \R^n$, then we have that, using the triangle inequality,
+%
+\begin{align*}
+    |x + y|_1
+        &= \sum_{i = 1}^n |x_i + y_i| \\
+        &\leq \sum_{i = 1}^n (|x_i| + |y_i|) \\
+        &= \sum_{i = 1}^n |x_i| + \sum_{i = 1}^n |y_i| \\
+        &= |x|_1 + |y|_1
+        .
+\end{align*}
+%
+We also have that, using the Cauchy-Schwarz inequality,
+%
+\begin{align*}
+    |x + y|_2^2
+        &= \sum_{i = 1}^n (x_i + y_i)^2 \\
+        &= \sum_{i = 1}^n (x_i^2 + 2 x_i y_i +  y_i^2) \\
+        &= \sum_{i = 1}^n x_i^2
+            + \sum_{i = 1}^n  y_i^2
+            + 2 \sum_{i = 1}^n x_i y_i \\
+        &= |x|_2^2 + |y|_2^2 + 2 \langle x, y \rangle \\
+        &\leq |x|_2^2 + |y|_2^2 + 2 |x|_2 |y|_2 \\
+        &= (|x|_2 + |y|_2)^2
+        .
+\end{align*}
+%
+Taking square roots (and remembering that we showed that $|\cdot|_2$
+is non-negative above), we obtain
+%
+\begin{equation*}
+    |x + y|_2 \leq |x|_2 + |y|_2
+    .
+\end{equation*}
+%
+Additionally, have that
+%
+\begin{align*}
+    |x + y|_\infty
+        &= \max_{1 \leq i \leq n} |x_i + y_i| \\
+        &= \max_{1 \leq i \leq n} |x_i|
+            + \max_{1 \leq i \leq n} |y_i| \\
+        &= |x|_\infty + |y|_\infty
+        .
+\end{align*}
+%
+Hence all three functions satisfy the second property in the definition of a norm.
+
+Finally, the third property that norms must satisfy is that for all $\alpha \in \R$,
+$N(\alpha x) = |\alpha| N(x)$. Let $x \in \R^n$ and $\alpha \in \R$, then we have that
+%
+\begin{align*}
+    |\alpha x|_1
+        &= \sum_{i = 1}^n |\alpha x_i|
+        = \sum_{i = 1}^n |\alpha| |x_i|
+        = |\alpha| \sum_{i = 1}^n |x_i|
+        = |\alpha| |x|_1
+        , \\
+    |\alpha x|_2
+        &= \sqrt{\sum_{i = 1}^n (\alpha x_i)^2}
+        = \sqrt{\sum_{i = 1}^n \alpha^2 x_i^2}
+        = \sqrt{\alpha^2 \sum_{i = 1}^n x_i^2}
+        = \sqrt{\alpha^2} \sqrt{\sum_{i = 1}^n x_i^2}
+        = |\alpha| \sqrt{\sum_{i = 1}^n x_i^2}
+        = |\alpha| |x|_2
+        , \\
+    |\alpha x|_\infty
+        &= \max_{1 \leq i \leq n} |\alpha x_i|
+        = \max_{1 \leq i \leq n} |\alpha| |x_i|
+        = |\alpha| \max_{1 \leq i \leq n} |x_i|
+        = |\alpha| |x|_\infty
+        .
+\end{align*}
+%
+Hence all three functions satisfy the third (and final) property in the definition of a norm.
+
+Thus we have shown that $|\cdot|_1$, $|\cdot|_2$, and $|\cdot|_\infty$ are norms.
 
 \newpage
 
