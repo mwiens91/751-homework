@@ -114,7 +114,7 @@ and let $j$ be such that $x_j \neq 0$. Then we have
 \end{align*}
 %
 Hence for all three functions $|\cdot|$, we have that $|x| = 0$ if and only if $x = 0$.
-Therefore all thee functions satisfy the first property in the definition of a norm.
+Therefore all three functions satisfy the first property in the definition of a norm.
 
 The second property that norms must satisfy is that $N(x + y) \leq N(x) + N(y)$.
 Let $x, y \in \R^n$, then we have that, using the triangle inequality,
@@ -156,7 +156,7 @@ Additionally, have that
 \begin{align*}
     |x + y|_\infty
         &= \max_{1 \leq i \leq n} |x_i + y_i| \\
-        &= \max_{1 \leq i \leq n} |x_i|
+        &\leq \max_{1 \leq i \leq n} |x_i|
             + \max_{1 \leq i \leq n} |y_i| \\
         &= |x|_\infty + |y|_\infty
         .
@@ -165,7 +165,7 @@ Additionally, have that
 Hence all three functions satisfy the second property in the definition of a norm.
 
 Finally, the third property that norms must satisfy is that for all $\alpha \in \R$,
-$N(\alpha x) = |\alpha| N(x)$. Let $x \in \R^n$ and $\alpha \in \R$, then we have that
+$N(\alpha x) = |\alpha| N(x)$. Let $x \in \R^n$ and $\alpha \in \R$. Then we have that
 %
 \begin{align*}
     |\alpha x|_1
@@ -221,7 +221,7 @@ Now, fix any $\epsilon > 0$. Then if $t_1, t_2 \in [a, b]$ with
 $|t_1 - t_2| < \epsilon / M$ we have that
 %
 \begin{equation*}
-    |g_m(t_1) - g_m(t_2)| < M |t_1 - t_2| < \epsilon
+    |g_m(t_1) - g_m(t_2)| \leq M |t_1 - t_2| < \epsilon
 \end{equation*}
 %
 for all $m \in \N$. Hence we have shown that $\{g_m(t)\}$ is equicontinuous.
@@ -252,11 +252,7 @@ where
 Note that
 %
 \begin{align*}
-    \dpd{f}{t}
-        &= - \frac{2 t \sqrt{2 + x(t)^2}}{(t^2 + 3)^2}
-            + \frac{x(t) x^\prime(t)}{(t^2 + 3) \sqrt{2 + x(t)^2}} \\
-        &= - \frac{2 t \sqrt{2 + x(t)^2}}{(t^2 + 3)^2}
-            + \frac{x(t)}{(t^2 + 3)^2}
+    \dpd{f}{x} = \frac{x(t)}{(3 + t^2) \sqrt{2 + x(t)^2}}.
 \end{align*}
 %
 is continuous on $\R^2$. Hence by Corollary 2.1 in the course notes,
@@ -291,42 +287,18 @@ Let
     .
 \end{equation*}
 %
-Note that both $f_1$ and $f_2$ are continuous. Taking a partial derivative
-in $t$, we have that
+Taking partial derivatives in $x$ we have
 %
 \begin{align*}
-    \dpd{f}{t}
-    &=
-    \begin{pmatrix}
-        x_1^\prime(t) \sin(t)
-            + x_1(t) \cos(t)
-            - 4 x_1(t) x_1^\prime(t)
-            - x_1^\prime(t) x_2(t)
-            - x_1(t) x_2^\prime(t) \\
-        4 t x_2(t)
-            + 2 t^2 x_2^\prime(t)
-            - 2 x_2(t) x_2^\prime(t)
-            - x_1^\prime(t) x_2(t)
-            - x_1(t) x_2^\prime(t)
-    \end{pmatrix}
-    \\
-    &=
-    \begin{pmatrix}
-        f_1(t, x(t)) \sin(t)
-            + x_1(t) \cos(t)
-            - 4 x_1(t) f_1(t, x(t))
-            - f_1(t, x(t)) x_2(t)
-            - x_1(t) f_2(t, x(t)) \\
-        4 t x_2(t)
-            + 2 t^2 f_2(t, x(t))
-            - 2 x_2(t) f_2^(t, x(t))
-            - f_1(t, x(t)) x_2(t)
-            - x_1(t) f_2(t, x(t))
-    \end{pmatrix}
+    \dpd{f_1}{x_1} &= \sin(t) - 4 x_1(t) - x_2(t), \\
+    \dpd{f_2}{x_1} &= - x_2(t), \\
+    \dpd{f_1}{x_2} &= - x_1(t), \\
+    \dpd{f_2}{x_2} &= 2t^2 - 2 x_2(t) - x_1(t)
     .
 \end{align*}
 %
-Clearly we have that $\pd{f}{t}$ is continuous on $\R^3$, and
+Clearly we have that $D_x f$ is continuous on $\R^3$ (since all
+of its components are continuous), and
 so by Corollary 2.1 in the course notes, we have that there exists
 a unique solution $x(t)$ defined on $[-\alpha, \alpha]$ for some
 $\alpha > 0$.
@@ -335,11 +307,73 @@ $\alpha > 0$.
 
 6. Let $f \in C(Q, \R^n)$, where $Q \subset \R^{n + 1}$ is an open set. Assume
 that $f(t, x)$ has continuous partial derivatives with respect to $x$. Show that
-$f(t, x)$ is locally Lipschitz in $x$ in $Q$, and Lipshitz in $x$ in $x$ on any compact
+$f(t, x)$ is locally Lipschitz in $x$ in $Q$, and Lipschitz in $x$ in $x$ on any compact
 and convex subset of $Q$.
 
 \textit{Solution.}
-hey
+First, let $(t_0, x_0) \in Q$ and let $Q_0 = Q_t \times Q_x \subset Q$,
+where $Q_t \subset \R$ and $Q_x \subset \R^n$ such that $(t_0, x_0) \in Q_0$,
+$t_0 \in Q_t$, $x_0 \in Q_x$, and also such that $Q, Q_t, Q_x$ are open, bounded,
+and convex (they could be, for example, balls).
+(Note that the Cartesian product of two open and convex sets is open and convex.)
+Since $f(t, x)$ has continuous partial derivatives in $x$, it follows that
+there exists a constant $M > 0$ such that $|D_x f(t, x)| < M$
+for all $(t, x) \in \overline{Q_0}$ (and hence for all $(t, x) \in Q_0$).
+This is because $\overline{Q_0}$ is closed and bounded, and hence compact;
+so we can apply the Extreme Value Theorem.
+Now, let $x, y \in Q_x$ and $t \in Q_t$. Define $g: [0, 1] \to \R^n$
+by $g(s) = f(t, x + s(y - x))$. (Note that since $Q_x$ is convex, we have
+that for all $s \in [0, 1]$, $x + s(y - x) \in Q_x$.) Thus, using the
+Mean Value Theorem, we have that for some $c \in (0, 1)$,
+%
+\begin{align*}
+    f(t, x) - f(t, y)
+        &= g(1) - g(0) \\
+        &= g^\prime(c) (1 - 0) \\
+        &= g^\prime(c) \\
+        &= (y - x) D_x f(t, x + c(y - x))
+        ,
+\end{align*}
+%
+where in the fourth line we used the chain rule
+%
+\begin{equation*}
+    \dod{g}{s} = \dod{f(t, x + s(y - x))}{s} = D_x f(t, x + s(y - x)) \dod{(x + s(y - x))}{s} = D_x f(t, x+ s(y - x) \cdot (y - x)
+    .
+\end{equation*}
+%
+Taking a suitable norm to both sides of our main equation we have
+%
+\begin{equation*}
+    |f(t, x) - f(t, y)|
+        = \envert{(y - x) D_x f(t, x + c(y - x))}
+        = |x - y| \envert{D_x f(t, x + c(y - x))}
+        < |x - y| M
+        .
+\end{equation*}
+%
+Hence we have shown that for all $(t_0, x_0) \in \Q$, there exists an open subset $Q_0 \subset Q$
+and a constant $M > 0$, where for all $(t, x), (t, y) \in Q_0$,
+%
+\begin{equation*}
+    |f(t, x) - f(t, y)| < |x - y| M
+    ,
+\end{equation*}
+%
+so $f(t, x)$ is locally Lipschitz on $Q$.
+
+Now suppose $Q^\prime \subset Q$ is any compact and convex subset of $Q$. Then
+by the Extreme Value Theorem, we can find a constant $M > 0$ such that for all
+$(t, x) \in \Q^\prime$, $|D_x f(t, x) < M|$. From here we can proceed exactly as
+before and find that for all $(t, x), (t, y) \in Q^\prime$,
+%
+\begin{equation*}
+    |f(t, x) - f(t, y)| < |x - y| M
+    ,
+\end{equation*}
+%
+and so $f(t, x)$ is Lipschitz on any compact and convex subset of $Q$.
+
 
 \newpage
 
@@ -365,9 +399,10 @@ Because $x$ and $y$ are continuous (because they are differentiable) we have tha
 %
 \begin{equation*}
     \lim_{t \to (t^*)^+} (x(t) - y(t)) = x(t^*) - y(t^*) = 0
+    ,
 \end{equation*}
 %
-(since either $t^* \in J$ or there is a sequence $\{t_n\} \subseteq J$ such that $\{t_n\} \to t^*$).
+since either $t^* \in J$ or there is a sequence $\{t_n\} \subseteq J$ such that $\{t_n\} \to t^*$.
 Define $x^* \coloneqq x(t^*) = y(t^*)$. Using Picard's Existence and Uniqueness Theorem, we have
 that there exists a unique solution to the IVP, for some $\alpha > 0$,
 %
