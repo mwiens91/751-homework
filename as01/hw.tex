@@ -200,7 +200,31 @@ Thus we have shown that $|\cdot|_1$, $|\cdot|_2$, and $|\cdot|_\infty$ are norms
 is uniformly bounded on $[a, b]$, then $\{g_m(t)\}$ is equicontinuous on $[a, b]$.
 
 \textit{Solution.}
-hey
+Let $M > 0$ be such that for all $m \in \N$
+%
+\begin{equation*}
+    |g_m^\prime(t)| < M
+\end{equation*}
+%
+for all $t \in [a, b]$. Then using the Mean Value Theorem and applying
+an absolute value to both sides, we have that
+for all $m \in \N$, $t_1, t_2 \in [a, b]$
+(without loss of generality taking $t_1 \leq t_2$),
+%
+\begin{equation*}
+    |g_m(t_1) - g_m(t_2)| = |g_m^\prime(t^*)| |t_1 - t_2| < M |t_1 - t_2|
+\end{equation*}
+%
+for some $t^* \in (t_1, t_2)$.
+
+Now, fix any $\epsilon > 0$. Then if $t_1, t_2 \in [a, b]$ with
+$|t_1 - t_2| < \epsilon / M$ we have that
+%
+\begin{equation*}
+    |g_m(t_1) - g_m(t_2)| < M |t_1 - t_2| < \epsilon
+\end{equation*}
+%
+for all $m \in \N$. Hence we have shown that $\{g_m(t)\}$ is equicontinuous.
 
 \newpage
 
@@ -212,7 +236,38 @@ hey
 \end{equation*}
 
 \textit{Solution.}
-hey
+Note that the above system is equivalent to the IVP
+%
+\begin{align*}
+    x^\prime(t) &= f(t, x(t)), \quad t \in [-\alpha, \alpha], \\
+    x(0) &= 2,
+\end{align*}
+%
+where
+%
+\begin{equation*}
+    f(t, x(t)) = \frac{1}{3 + t^2} \sqrt{2 + x(t)^2}.
+\end{equation*}
+%
+Note that
+%
+\begin{align*}
+    \dpd{f}{t}
+        &= - \frac{2 t \sqrt{2 + x(t)^2}}{(t^2 + 3)^2}
+            + \frac{x(t) x^\prime(t)}{(t^2 + 3) \sqrt{2 + x(t)^2}} \\
+        &= - \frac{2 t \sqrt{2 + x(t)^2}}{(t^2 + 3)^2}
+            + \frac{x(t)}{(t^2 + 3)^2}
+\end{align*}
+%
+is continuous on $\R^2$. Hence by Corollary 2.1 in the course notes,
+we have that for some $\alpha > 0$
+%
+\begin{equation*}
+    x(t) = 2 + \int_0^t \frac{1}{3 + s^2} \sqrt{2 + x(s)^2} \dif s, \quad t \in [-\alpha, \alpha]
+    .
+\end{equation*}
+%
+has a unique solution.
 
 \newpage
 
@@ -225,7 +280,56 @@ hey
 \end{align*}
 
 \textit{Solution.}
-hey
+Let
+%
+\begin{equation*}
+    f(t, x(t)) =
+    \begin{pmatrix}
+        x_1(t) \sin(t) - 2 x_1(t)^2 - x_1(t) x_2(t) \\
+        2 t^2 x_2(t) - x_2(t)^2 - x_1(t) x_2(t)
+    \end{pmatrix}
+    .
+\end{equation*}
+%
+Note that both $f_1$ and $f_2$ are continuous. Taking a partial derivative
+in $t$, we have that
+%
+\begin{align*}
+    \dpd{f}{t}
+    &=
+    \begin{pmatrix}
+        x_1^\prime(t) \sin(t)
+            + x_1(t) \cos(t)
+            - 4 x_1(t) x_1^\prime(t)
+            - x_1^\prime(t) x_2(t)
+            - x_1(t) x_2^\prime(t) \\
+        4 t x_2(t)
+            + 2 t^2 x_2^\prime(t)
+            - 2 x_2(t) x_2^\prime(t)
+            - x_1^\prime(t) x_2(t)
+            - x_1(t) x_2^\prime(t)
+    \end{pmatrix}
+    \\
+    &=
+    \begin{pmatrix}
+        f_1(t, x(t)) \sin(t)
+            + x_1(t) \cos(t)
+            - 4 x_1(t) f_1(t, x(t))
+            - f_1(t, x(t)) x_2(t)
+            - x_1(t) f_2(t, x(t)) \\
+        4 t x_2(t)
+            + 2 t^2 f_2(t, x(t))
+            - 2 x_2(t) f_2^(t, x(t))
+            - f_1(t, x(t)) x_2(t)
+            - x_1(t) f_2(t, x(t))
+    \end{pmatrix}
+    .
+\end{align*}
+%
+Clearly we have that $\pd{f}{t}$ is continuous on $\R^3$, and
+so by Corollary 2.1 in the course notes, we have that there exists
+a unique solution $x(t)$ defined on $[-\alpha, \alpha]$ for some
+$\alpha > 0$.
 
 \newpage
 
@@ -249,6 +353,55 @@ of the autonomous system
 cannot intersect at a point, not even at different times.
 
 \textit{Solution.}
-hey
+Suppose $x, y$ are distinct solutions of the above autonomous system.
+Since the solutions are distinct there exists $t_1 \in \R$ such that $x(t_1) \neq y(t_1)$.
+Suppose for contradiction that there exists some point $t_2 \in \R$ such that $x(t_2) = y(t_2)$.
+Now we need to consider two (exhaustive) cases.
+
+The first case occurs when $t_1 < t_2$. Let $I \coloneqq [t_1, t_2]$, let
+$J \coloneqq \{t \in I: x(t) = y(t)\}$, and let $t^* \coloneqq \inf(J)$.
+Note that $t^*$ is well defined by the greatest-lower-bound property of the real numbers.
+Because $x$ and $y$ are continuous (because they are differentiable) we have that
+%
+\begin{equation*}
+    \lim_{t \to (t^*)^+} (x(t) - y(t)) = x(t^*) - y(t^*) = 0
+\end{equation*}
+%
+(since either $t^* \in J$ or there is a sequence $\{t_n\} \subseteq J$ such that $\{t_n\} \to t^*$).
+Define $x^* \coloneqq x(t^*) = y(t^*)$. Using Picard's Existence and Uniqueness Theorem, we have
+that there exists a unique solution to the IVP, for some $\alpha > 0$,
+%
+\begin{align*}
+    x^\prime(t) &= f(x(t)), \quad t \in [t^* - \alpha, t^* + \alpha], \\
+    x(t^*) &= x^*
+\end{align*}
+%
+(note that we can apply the theorem because $f$ is continuously differentiable). Since both
+$x$ and $y$ satisfy this IVP, we have that $x \equiv y$ on $[t^* - \alpha, t^* + \alpha]$.
+But this contradicts that $x(t) \neq y(t)$ for $t < t^*$.
+
+The second case occurs when $t_1 > t_2$ and the approach is nearly identical to the first case.
+Let $I \coloneqq [t_2, t_1]$, let $J \coloneqq \{t \in I: x(t) = y(t)\}$, and let $t^* \coloneqq \sup(J)$.
+Note that $t^*$ is well defined by the least-upper-bound property of the real numbers.
+Similar to the first case we have that
+%
+\begin{equation*}
+    \lim_{t \to (t^*)^-} (x(t) - y(t)) = x(t^*) - y(t^*) = 0
+\end{equation*}
+%
+Define $x^* \coloneqq x(t^*) = y(t^*)$. Using Picard's Existence and Uniqueness Theorem, we have
+that there exists a unique solution to the IVP, for some $\alpha > 0$,
+%
+\begin{align*}
+    x^\prime(t) &= f(x(t)), \quad t \in [t^* - \alpha, t^* + \alpha], \\
+    x(t^*) &= x^*
+\end{align*}
+%
+Since both $x$ and $y$ satisfy this IVP, we have that $x \equiv y$ on $[t^* - \alpha, t^* + \alpha]$.
+But this contradicts that $x(t) \neq y(t)$ for $t > t^*$.
+
+Hence in either case we arrive at a contradiction, and thus we can conclude that there
+is no such $t_2 \in \R$ such that $x(t_2) = y(t_2)$ for distinct solutions
+$x$ and $y$ to the IVP $x^\prime(t) = f(x(t))$.
 
 \end{document}
