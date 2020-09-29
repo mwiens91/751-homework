@@ -1,0 +1,179 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+\usepackage{changepage}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{AMATH 751 assignment 2} \\
+\textbf{Matt Wiens} \\
+\textbf{2020-09-19}
+
+1. Show that all solutions of the following systems exist on $[0, \infty)$:
+
+(a)
+%
+\begin{align*}
+    x_1^\prime &= x_2, \\
+    x_2^\prime &= -x_1 - 2 x_2^3, \\
+    x(0) &= x_0,
+\end{align*}
+%
+where $x \in \R^2$.
+
+\textit{Solution.}
+hey
+
+\vspace{5mm}
+
+(b)
+%
+\begin{align*}
+    x_1^\prime &= x_1 - 2 x_1^2 - x_1 x_2, \\
+    x_2^\prime &= 2 x_2 - x_2^2 - x_1 x_2, \\
+    x(0) &= x_0,
+\end{align*}
+%
+where $x \in (\R^+)^2$.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+2. Let $f \in C(\R^+ \times \R^n, \R^n)$, and let $x(t)$ be a solution of IVP
+%
+\begin{equation*}
+    x^\prime(t) = f(t, x), \quad x(t_0) = x_0
+\end{equation*}
+%
+on a right-maximal interval $J = [t_0, \beta)$. Show that either $\beta = \infty$
+or
+%
+\begin{equation*}
+    \limsup_{t \to \beta^-} |x(t)| = \infty.
+\end{equation*}
+
+\textit{Solution.}
+hey
+
+\newpage
+
+3. Let $J = (a, b]$ and let $m, v \in C(J, R)$ such that $v(t) \geq 0$ for
+$t \in J$ and for some $c \in \R$,
+%
+\begin{equation*}
+    m(t) \leq c + \int_t^b v(s) m(s) \dif s
+\end{equation*}
+%
+for $t \in J$. Show that for $t \in J$,
+%
+\begin{equation*}
+    m(t) \leq c \exp\del{\int_t^b v(s) \dif s}.
+\end{equation*}
+
+\textit{Solution.}
+hey
+
+\newpage
+
+4. Let $g \in C(\R, \R^n)$ and $A(t)$ be an $n \times n$ matrix of continuous functions on $\R$.
+Show that the IVP
+%
+\begin{equation*}
+    x^\prime(t) = A(t) x + g(t), \quad x(t_0) = x_0
+\end{equation*}
+%
+has a unique solution in $(-\infty, \infty)$.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+5. Consider the system
+%
+\begin{equation}
+    x^\prime(t) = f(x)
+    \label{eq:5-1}
+\end{equation}
+%
+where $f \in C^1(\Omega, \R^2)$ and $\Omega \subset \R^2$ is an open set. Suppose that~\eqref{eq:5-1}
+has a periodic solution $\gamma$ which encloses a set $K \subset \Omega$. Show that all solutions
+of~\eqref{eq:5-1} with $x(t_0) = x_0 \in K$ exist on $(- \infty, \infty)$.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+6. Let $f \in C(Q, \R^n)$ with $\Q \subset \R^{n + 1}$ an open set. Let $U$ be a compact set and
+$V$ be a bounded open set such that $U \subset V$ and $\overline{V} \subset Q$. Show that for any
+$(t_0, x_0) \in U$, the IVP
+%
+\begin{equation*}
+    x^\prime(t) = f(t, x), \quad x(t_0) = x_0
+\end{equation*}
+%
+has a solution $x(t)$ defined on $[t_1, t_2]$ such that $(t_i, x(t_i)) \not\in U$ for $i = 1, 2$.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+7. Let $W \in C^1(\R^n, \R)$ such that
+%
+\begin{equation*}
+    \lim_{|x| \to \infty} W(x) = \infty
+    .
+\end{equation*}
+%
+Suppose $f \in C(\R^+ \times \R^n, \R^n)$ and for some $M > 0$,
+%
+\begin{equation*}
+    \dod{W(x)}{x} f(t, x) \leq 0
+\end{equation*}
+%
+for $|x| \geq M$ and $t \in \R^+$. Show that all solutions of the IVP
+%
+\begin{equation*}
+    x^\prime(t) = f(t, x), \quad x(t_0) = x_0
+\end{equation*}
+%
+exist on $[t_0, \infty)$.
+
+\textit{Solution.}
+hey
+
+\end{document}
