@@ -37,7 +37,7 @@
 
 \textbf{AMATH 751 assignment 2} \\
 \textbf{Matt Wiens} \\
-\textbf{2020-09-19}
+\textbf{2020-10-19}
 
 1. Show that all solutions of the following systems exist on $[0, \infty)$:
 
@@ -52,7 +52,27 @@
 where $x \in \R^2$.
 
 \textit{Solution.}
-hey
+Let $x(t)$ be a solution to the above system on a right-maximal
+interval $J = [0, \beta)$. Let
+$m(t) = \frac{1}{2} x_1^2(t) + \frac{1}{2} x_2^2(t)$. Then
+%
+\begin{align*}
+    m^\prime(t)
+        &= x_1^\prime(t) x_1(t) + x_2^\prime(t) x_2(t) \\
+        &= x_2(t) x_1(t) + (-x_1(t) - 2 x_2(t)^3) x_2(t) \\
+        &= - 2 x_2(t)^4 \\
+        &\leq 0
+\end{align*}
+%
+for $t \in J$, from which it follows that
+%
+\begin{equation*}
+    \envert{x(t)}_2 = 2 m(t) \leq 2 m(0)
+    = \frac{1}{2} x_{10}^2 + \frac{1}{2} x_{20}^2
+\end{equation*}
+%
+for $t \in J$.
+Thus $x(t)$ is bounded for $t \geq 0$ and by Corollary $2.3$ in the course notes, $\beta = \infty$.
 
 \vspace{5mm}
 
@@ -67,7 +87,28 @@ hey
 where $x \in (\R^+)^2$.
 
 \textit{Solution.}
-hey
+Again, we let $x(t)$ be a solution to the above system on a right-maximal
+interval $J = [0, \beta)$. Let
+$m(t) = \frac{1}{2} x_1^2(t) + \frac{1}{2} x_2^2(t)$. Then
+%
+\begin{align*}
+    m^\prime(t)
+        &= x_1^\prime(t) x_1(t) + x_2^\prime(t) x_2(t) \\
+        &= (x_1(t) - 2 x_1^2(t) - x_1(t) x_2(t)) x_1(t)
+            + (2 x_2(t) - x_2^2(t) - x_1(t) x_2(t)) x_2(t) \\
+        &= x_1(t)^2 (1 - 2 x_1(t) - x_2(t))
+            + x_2(t)^2 (2 - x_2(t) - x_1(t))
+        .
+\end{align*}
+%
+for $t \in J$.
+Note that $m^\prime(t) \leq 0$ whenever $1 - 2 x_1(t) - x_2(t) \leq 0$
+and $2 - x_2(t) - x_1(t) \leq 0$. Hence, we have two cases, either
+$1 - 2 x_1(t) - x_2(t) \geq 0$
+or $2 - x_2(t) - x_1(t) \geq 0$ are satisfied, in which case $x(t)$ is clearly bounded, or
+both $1 - 2 x_1(t) - x_2(t) \leq 0$ and $2 - x_2(t) - x_1(t) \leq 0$ and thus
+$|x(t)|_2^\prime = 2 m^\prime(t) \leq 0$. In either case, it follows that $x(t)$ is bounded and thus
+by Corollary $2.3$ in the course notes, $\beta = \infty$.
 
 \newpage
 
@@ -85,7 +126,27 @@ or
 \end{equation*}
 
 \textit{Solution.}
-hey
+If $J$ is a right-maximal interval than either $\beta$ is infinite or finite.
+If $\beta$ is finite, suppose for contradiction that
+%
+\begin{equation*}
+    \limsup_{t \to \beta^-} |x(t)| < \infty.
+\end{equation*}
+%
+If we restrict our aim to some open bounded subset $D \subset \R^+ \times \R^n$ where
+$(t, x(t)) \in D$ for all $t \in [c, \beta)$, for some $c \in [t_0, \beta)$.
+Then since $f$ is bounded on $\overline{D}$ (because both $f$ is continuous and our above
+assumption means it is bounded on $\partial D$), by Lemma $2.2$ of the course notes,
+$(\beta, x(\beta))$ exists and is finite, and hence
+we can extend the solution to an interval $[t_0, \beta + \alpha)$ for some
+$\alpha > 0$ using Corollary $2.2$ from the course notes. However this contradicts the assumption
+that $J$ was right-maximal, and so we must have
+%
+\begin{equation*}
+    \limsup_{t \to \beta^-} |x(t)| = \infty
+\end{equation*}
+%
+if $\beta$ is finite.
 
 \newpage
 
@@ -103,7 +164,60 @@ for $t \in J$. Show that for $t \in J$,
 \end{equation*}
 
 \textit{Solution.}
-hey
+%
+Here we let, where $t \in J$ (here and throughout the rest of the proof),
+%
+\begin{equation*}
+    w(t) \coloneqq c + \int_t^b v(s) m(s) \dif s
+         = c - \int_b^t v(s) m(s) \dif s
+    .
+\end{equation*}
+%
+Taking a derivative, we have
+%
+\begin{equation*}
+    w^\prime(t) = - v(t) m(t) \geq - v(t) w(t)
+\end{equation*}
+%
+and so
+%
+\begin{equation*}
+    w^\prime(t) + v(t) w(t) \geq 0
+    .
+\end{equation*}
+%
+Multiplying through by the integrating factor
+%
+\begin{equation*}
+    \exp\del{\int_b^t v(s) \dif s},
+\end{equation*}
+%
+we have
+%
+\begin{equation*}
+    \dod{}{t} \sbr{
+        w(t)
+        \exp\del{\int_b^t v(s) \dif s}
+    }
+    \geq 0
+    .
+\end{equation*}
+%
+Thus,
+%
+\begin{equation*}
+    w(t) \exp\del{\int_b^t v(s) \dif s} \leq w(b) = c
+\end{equation*}
+%
+and thus
+%
+\begin{equation*}
+    m(t)
+    \leq w(t)
+    \leq c \exp\del{- \int_b^t v(s) \dif s}
+    = c \exp\del{\int_t^b v(s) \dif s}
+    .
+\end{equation*}
 
 \newpage
 
@@ -117,7 +231,57 @@ Show that the IVP
 has a unique solution in $(-\infty, \infty)$.
 
 \textit{Solution.}
-hey
+We can write the above system as
+%
+\begin{equation*}
+    x^\prime(t) = f(t, x), \quad x(t_0) = x_0
+    ,
+\end{equation*}
+%
+where
+%
+\begin{equation*}
+    f(t, x) = A(t) x + g(t)
+    .
+\end{equation*}
+%
+Hence
+%
+\begin{equation*}
+    |f(t, x)|
+    = |A(t) x + g(t)|
+    \leq |A(t) x| + |g(t)|
+    \leq \enVert{A(t)} |x| + |g(t)|
+    .
+\end{equation*}
+%
+Noting that $\enVert{A(t)} \in C(\R, \R^+)$, then taking
+$a(t) = \enVert{A(t)}$, $b(t) = |g(t)|$, by Theorem $2.4$ in the course
+notes we have that the IVP has a solution $x(t)$ on $\R$.
+
+To show that this solution is unique, suppose that two $x(t)$ and $x^*(t)$ satisfy the above system.
+Noting that if $m(t) = |x(t) - x^*(t)|$, $c = 0$, and $v(t) = \enVert{A(t)}$,
+then
+%
+\begin{equation*}
+    m(t) \leq c + \int_{t_0}^t v(s) m(s) \dif s
+\end{equation*}
+%
+for $t \in \R$ (this follows from what we showed above). Then we can apply Lemma $2.3$ from the
+course notes to get that
+%
+\begin{equation*}
+    m(t) \leq 0
+\end{equation*}
+%
+for $t \in \R$ and so
+%
+\begin{equation*}
+    |x(t) - x^*(t)| = 0
+\end{equation*}
+%
+for all $t \in \R$, from which it follows that $x(t) \equiv x^*(t)$, which
+proves uniqueness.
 
 \newpage
 
@@ -133,7 +297,11 @@ has a periodic solution $\gamma$ which encloses a set $K \subset \Omega$. Show t
 of~\eqref{eq:5-1} with $x(t_0) = x_0 \in K$ exist on $(- \infty, \infty)$.
 
 \textit{Solution.}
-hey
+Note that~\eqref{eq:5-1} is an autonomous system, and so its distinct
+solutions never intersect (this was showed on the last assignment).
+In our case, this means that any solutions that start within $K$ must
+remain within $K$ for all times $t$. Hence all solutions with $x(t_0) = x_0$
+exist on $(-\infty, \infty)$.
 
 \newpage
 
@@ -148,7 +316,15 @@ $(t_0, x_0) \in U$, the IVP
 has a solution $x(t)$ defined on $[t_1, t_2]$ such that $(t_i, x(t_i)) \not\in U$ for $i = 1, 2$.
 
 \textit{Solution.}
-hey
+According to Corollary $2.2$ from the course notes, there exists some $\alpha_1 > 0$ such that
+the IVP has a solution on $[t_0 - \alpha_1, t_0 + \alpha_1]$. We can continue this procedure to extend on the right to
+$[t_0 - \alpha_1, t_0 + \alpha_2]$ where $\alpha_2 > \alpha_1$. Since $U$ is a compact set, as discussed in lectures,
+after a finite number of extensions $n$ we can extend the solution to
+$[t_0 - \alpha_1, t_0 + \alpha_n]$, such that $\alpha_1 < \alpha_2 < \cdots < \alpha_n$ and
+$(t_0 + \alpha_n, x(t_0 + \alpha_n)) \not\in U$. Repeating this procedure on the right, we can find a finite sequence
+$\alpha_1 < \beta_2 < \cdots < \beta_m$ such that the solution exists on $[t_0 - \beta_m, t_0 + \alpha_n]$ where
+$(t_0 - \beta_m, x(t_0 - \beta_m)) \not\in U$. Hence identifying
+$t_1 \coloneqq t_0 - \beta_m, t_2 \coloneqq t_0 + \alpha_n$, we have shown the result.
 
 \newpage
 
