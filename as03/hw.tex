@@ -1,0 +1,187 @@
+% Set up the document
+\documentclass{article}
+
+% Page size
+\usepackage[
+    letterpaper,]{geometry}
+\usepackage{changepage}
+
+% Lines between paragraphs
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% Math
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{commath}
+
+% Number sets
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Links
+\usepackage{hyperref}
+
+% Page numbers at top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand\headrulewidth{0pt}
+
+\begin{document}
+
+\textbf{AMATH 751 assignment 3} \\
+\textbf{Matt Wiens} \\
+\textbf{2020-11-02}
+
+1. Let $\Phi(t, t_0)$ be the fundamental solution of the linear system
+%
+\begin{equation*}
+    y^\prime(t) = A(t) y(t),
+\end{equation*}
+%
+where $A(t)$ is an $n \times n$ matrix of continuous functions in $\R$. Show that
+
+(i) $\Phi(t, t_2) \Phi(t_2, t_1) = \Phi(t, t_1)$, for all $t_1, t_2 \in \R$.
+
+\textit{Solution.}
+hey
+
+\vspace{5mm}
+
+(ii) $\Phi^{-1}(t, t_0)$ exists and $\Phi^{-1}(t, t_0) = \Phi(t_0, t)$.
+
+\textit{Solution.}
+hey
+
+\vspace{5mm}
+
+(iii) The trivial solution is asymptotically stable if
+$\enVert[0]{\Phi(t, t_0)} \to 0$ as $t \to \infty$.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+2. Show that the IVP
+%
+\begin{equation*}
+    h^\prime(t) = - \alpha \sqrt{h(t)}, \quad h(0) = 0, \quad \alpha > 0,
+\end{equation*}
+%
+has infinitely many different solutions. Find the maximal and minimal solutions.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+3. Find all the equilibria, discuss their stability properties, and sketch the phase
+portraits of the system
+%
+\begin{align*}
+    x_1^\prime(t) &= x_1(t) (2 - 3 x_1(t) + x_2(t)), \\
+    x_2^\prime(t) &= x_2(t) (1 + 2 x_1(t) - 3 x_2(t)).
+\end{align*}
+
+\textit{Solution.}
+hey
+
+\newpage
+
+4. Consider the system
+%
+\begin{align*}
+    x_1^\prime(t) &= - [x_1(t)]^3 + x_2(t), \\
+    x_2^\prime(t) &= -\frac{1}{2} x_1(t) - x_2(t) + d \sin t,
+\end{align*}
+%
+where $d$ is a constant.
+
+(a) Show that all solutions exist on $[0, \infty)$.
+
+\textit{Solution.}
+hey
+
+\vspace{5mm}
+
+(b) If $d = 0$, show that the trivial solution is asymptotically stable.
+
+\textit{Solution.}
+hey
+
+\newpage
+
+5. Determine the stability property of the trivial solution of the system
+%
+\begin{align*}
+    x_1^\prime(t) &= -2t x_1(t) + 2 [x_1(t)]^3 x_2(t) \sin^2 t, \\
+    x_2^\prime(t) &= -t x_2(t) + 3 x_1(t) [x_2(t)]^7 e^{-t}.
+\end{align*}
+
+\textit{Solution.}
+hey
+
+\newpage
+
+6. Consider the system
+%
+\begin{align*}
+    x^\prime(t) &= y(t)^3 - 4 x(t), \\
+    y^\prime(t) &= y(t)^3 - y(t) - 3 x(t).
+\end{align*}
+%
+(a) Find all the equilibria and discuss their stability properties.
+
+\textit{Solution.}
+hey
+
+\vspace{5mm}
+
+(b) Show that the line $y = x$ is invariant under the flow of the system.
+
+\textit{Solution.}
+hey
+
+\vspace{5mm}
+
+(c) Show that $|y(t) - x(t)| \to 0$ as $t \to \infty$.
+
+\textit{Solution.}
+there's a hint to find a differential equation for $y - x$
+
+\newpage
+
+7. Let $f \in C(\R^+ \times \R^n, \R^n)$ and $g \in C(\R^+ \times \R, \R^+)$.
+Assume that (i) $g(t, u)$ is nondecreasing in $u$ for each fixed $t$ and
+%
+\begin{equation*}
+    |f(t, x)| \leq g(t, |x|), \quad (t, x) \in \R^+ \times \R^n;
+\end{equation*}
+%
+(ii) every solution $u(t) = u(t, t_0, u_0)$ of the IVP
+%
+\begin{equation*}
+    u^\prime(t) = g(t, u(t)), \quad u(t_0) = u_0
+\end{equation*}
+%
+is bounded.
+
+Show that every solution of the IVP
+%
+\begin{equation*}
+    x^\prime(t) = f(t, x(t)), \quad x(t_0) = x_0
+\end{equation*}
+%
+exists on $[t_0, \infty)$ and converges to a constant vector as $t \to \infty$.
+
+\textit{Solution.}
+hey
+
+\end{document}
