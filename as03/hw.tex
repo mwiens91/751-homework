@@ -50,14 +50,66 @@ where $A(t)$ is an $n \times n$ matrix of continuous functions in $\R$. Show tha
 (i) $\Phi(t, t_2) \Phi(t_2, t_1) = \Phi(t, t_1)$, for all $t_1, t_2 \in \R$.
 
 \textit{Solution.}
-hey
+Let $c \in \R^n$ be an arbitrary column vector.
+Note that both
+%
+\begin{equation*}
+    x(t) \coloneqq \Phi(t, t_1) c \in C(\R, \R^n)
+\end{equation*}
+%
+and
+%
+\begin{equation*}
+    \tilde{x}(t) \coloneqq \Phi(t, t_2) x(t_2) = \Phi(t, t_2) \Phi(t_2, t_1) c \in C(\R, \R^n)
+\end{equation*}
+%
+are solutions to the IVP
+%
+\begin{equation*}
+    y^\prime(t) = A(t)y(t), \quad y(t_2) = \Phi(t_2, t_1) c
+    .
+\end{equation*}
+%
+Note that the initial condition is satisfied by $\tilde{x}(t)$
+due to the fact that $\Phi(t_2, t_2) = I$.
+By Corollary $2.7$ of the course notes, the solution to the
+IVP must be unique, and so we have
+%
+\begin{equation*}
+    x(t) \equiv \tilde{x}(t)
+\end{equation*}
+%
+on $\R$, and so
+%
+\begin{equation*}
+    \Phi(t, t_1) c = \Phi(t, t_2) \Phi(t_2, t_1) c
+\end{equation*}
+%
+for all $c \in \R^n$. Thus
+%
+\begin{equation*}
+    \Phi(t, t_1) = \Phi(t, t_2) \Phi(t_2, t_1)
+\end{equation*}
+%
+for all $t_1, t_2 \in \R$.
 
 \vspace{5mm}
 
 (ii) $\Phi^{-1}(t, t_0)$ exists and $\Phi^{-1}(t, t_0) = \Phi(t_0, t)$.
 
 \textit{Solution.}
-hey
+From property (i) we have that
+$\Phi(t, t_1) \Phi(t_1, t_0) = \Phi(t, t_0)$, for all $t_0, t_1 \in \R$.
+Hence it follows that by substituting in $t_0$ for $t$ and using the fact that
+$\Phi(t_0, t_0) = I$ that
+%
+\begin{equation*}
+    \Phi(t_0, t_1) \Phi(t_1, t_0) = \Phi(t_0, t_0) = I
+    .
+\end{equation*}
+%
+Hence $\Phi^{-1}(t_0, t_1)$ exists and is given by $\Phi^{-1}(t_0, t_1) = \Phi(t_1, t_0)$.
+Since $t_0$ and $t_1$ were arbitrary, property (ii) follows.
 
 \vspace{5mm}
 
