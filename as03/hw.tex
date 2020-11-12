@@ -37,7 +37,7 @@
 
 \textbf{AMATH 751 assignment 3} \\
 \textbf{Matt Wiens} \\
-\textbf{2020-11-02}
+\textbf{2020-11-11}
 
 1. Let $\Phi(t, t_0)$ be the fundamental solution of the linear system
 %
@@ -117,7 +117,35 @@ Since $t_0$ and $t_1$ were arbitrary, property (ii) follows.
 $\enVert[0]{\Phi(t, t_0)} \to 0$ as $t \to \infty$.
 
 \textit{Solution.}
-hey
+Note that the solution to the linear system is
+%
+\begin{equation*}
+    y(t) \coloneqq y_0 \Phi(t, t_0)
+    .
+\end{equation*}
+%
+Given that $\enVert[0]{\Phi(t, t_0)} \to 0$ as $t \to \infty$, for any $\epsilon > 0$,
+there exists $t^*$ such that $\enVert[0]{\Phi(t, t_0)} < \epsilon$ for all $t \geq t^*$.
+Let
+%
+\begin{equation*}
+    k = \max\cbr{\max_{t_0 \leq t < t^*} \enVert[0]{\Phi(t, t_0)}, \epsilon}
+    .
+\end{equation*}
+%
+Then if we let
+%
+\begin{equation*}
+    |y_0| \leq \frac{\epsilon}{k}
+\end{equation*}
+%
+then we will have $|y(t)| < \epsilon$ for all $t \geq t_0$.
+Hence the trivial solution is S1.
+
+To show that the trivial solution is S3, we have that for any $|y_0|$,
+$|y(t)| \to 0$ as $t \to \infty$.
+
+Hence, the trivial solution is asymptotically stable since it is S1 and S3.
 
 \newpage
 
@@ -130,7 +158,28 @@ hey
 has infinitely many different solutions. Find the maximal and minimal solutions.
 
 \textit{Solution.}
-hey
+To show that this IVP has infinitely many solutions, we can easily see that for all $t^* \leq 0$
+%
+\begin{equation*}
+    h_{t^*}(t) =
+    \begin{dcases}
+        \frac{\alpha^2}{4} (t - t^*)^2, & 0 < t^* \leq 0, \\
+        0, & t > t^*
+    \end{dcases}
+\end{equation*}
+%
+solves the IVP. Given that all solutions of the IVP are non-negative, we can see straight away
+that the zero solution $h(t) \equiv 0$ is the minimal solution of the
+IVP (this corresponds to taking the limit $t^* \to - \infty$ in
+$h_{t^*}(t)$). Using the definition of a maximal solution,
+for all $t^*$ we have that
+%
+\begin{equation*}
+    \lim_{t \to 0^+} (h_0(t) - h_{t^*}(t)) = \lim_{t \to 0^+} h_0(t) \geq 0
+    ,
+\end{equation*}
+%
+and so $h_0(t)$ is a maximal solution of the IVP.
 
 \newpage
 
@@ -143,7 +192,76 @@ portraits of the system
 \end{align*}
 
 \textit{Solution.}
-hey
+To find all equilibria, we solve
+%
+\begin{align*}
+    0 &= x_1(t) (2 - 3 x_1(t) + x_2(t)), \\
+    0 &= x_2(t) (1 + 2 x_1(t) - 3 x_2(t)).
+\end{align*}
+%
+which has solutions
+%
+\begin{equation*}
+    (x_1, x_2) \in \cbr{(0, 0), \del{0, \frac{1}{3}}, \del{\frac{2}{3}, 0}, (1, 1)}
+    .
+\end{equation*}
+%
+Now, we have that
+%
+\begin{equation*}
+    Df =
+    \begin{pmatrix}
+        2 - 6 x_1 + x_2 & x_1 \\
+        2 x_2 & 1 + 2 x_1 - 6 x_2
+    \end{pmatrix}
+    .
+\end{equation*}
+%
+Evaluating $Df$ at each of the equilibrium points we have
+%
+\begin{align*}
+    Df(0, 0) &=
+    \begin{pmatrix}
+        2 & 0 \\
+        0 & 1
+    \end{pmatrix}
+    ,
+    \\
+    Df\del{0, \frac{1}{3}} &=
+    \begin{pmatrix}
+        \frac{7}{3} & 0 \\
+        \frac{2}{3} & -1
+    \end{pmatrix}
+    ,
+    \\
+    Df\del{\frac{2}{3}, 0} &=
+    \begin{pmatrix}
+        -2 & \frac{2}{3} \\
+        0 & \frac{7}{3}
+    \end{pmatrix}
+    ,
+    \\
+    Df(1, 1) &=
+    \begin{pmatrix}
+        - 3 & 1 \\
+        2 & - 3
+    \end{pmatrix}
+    .
+\end{align*}
+%
+These matrices have eigenvalues (in the order in which they appear above)
+%
+\begin{align*}
+    \lambda &= 2, 1, \\
+    \lambda &= \frac{7}{3}, -1, \\
+    \lambda &= \frac{7}{3}, -2, \\
+    \lambda &= -3 \pm \sqrt{2}.
+\end{align*}
+%
+Thus we see that $(0, 0)$ is a nonlinear source and so is not stable; both
+$(0, 1/3)$ and $(2/3, 0)$ are saddles and so again these are not stable;
+however we see that $(1, 1)$ is a nonlinear sink with both eigenvalues having
+negative real part, and so is asymptotically stable.
 
 \newpage
 
@@ -159,14 +277,51 @@ where $d$ is a constant.
 (a) Show that all solutions exist on $[0, \infty)$.
 
 \textit{Solution.}
-hey
+To show that all solutions exist on $[0, \infty)$ we can to show that $|x(t)|_2$ is bounded
+on $[0, c)$ for any $c > 0$. Let $V(t) = \frac{1}{2} x_1^2 + x_2^2$.
+Then
+%
+\begin{align*}
+    V^\prime(t)
+        &= x_1(t) x_1^\prime(t) + 2 x_2(t) x_2^\prime(t) \\
+        &= x_1(t) \del{- [x_1(t)]^3 + x_2(t)} + 2 x_2(t) \del{-\frac{1}{2} x_1(t) - x_2(t) + d \sin t} \\
+        &= - [x_1(t)]^4 + x_1(t) x_2(t) - x_1(t)x_2(t) - 2 x_2^2(t) + 2 d x_2(t) \sin t \\
+        &= - [x_1(t)]^4 - 2 x_2^2(t) + 2 d x_2(t) \sin t \\
+        &= - [x_1(t)]^4 - 2 x_2(t) (x_2(t) - d \sin t)
+        .
+\end{align*}
+%
+Note that this is non-positive whenever both $x_2(t) \geq 0$ and $x_2 \geq d \sin(t)$ or more simply $x_2 \geq |d|$;
+or when $x_2(t) \leq 0$ and $x_2(t) \leq d \sin(t)$ or more simply $x_2(t) \leq - |d|$. Hence it can only positive
+provided that $-|d| < x_2(t) < |d|$ or more simply when $|x_2(t)| < |d|$. However, we can also see that even if $|x_2(t)| < |d|$,
+$|x_1(t)|$ is clearly bounded by some constant $k > 0$ for $V^\prime(t)$ to remain positive.
+
+Noticing that $|x(t)|_2 \leq 2 V(t)$, we have that whenever $|x(t)|_2 \geq |(k, |d|)|_2 \eqqcolon r$, $V^\prime(t) \leq 0$,
+and thus we have that for all $c > 0$,
+%
+\begin{equation*}
+    \max_{0 \leq t \leq c} |x(t)|_2 = \max \cbr{|x(0)|, r}
+    .
+\end{equation*}
+%
+Hence $|x(t)|_2$ is bounded on $[0, c)$ for all $c > 0$ and thus all solutions exist on $[0, \infty)$.
 
 \vspace{5mm}
 
 (b) If $d = 0$, show that the trivial solution is asymptotically stable.
 
 \textit{Solution.}
-hey
+If $d = 0$, then we have that, from part (a),
+%
+\begin{equation*}
+    \dod{|x(t)|_2}{t} \leq 2 V^\prime(t) = - [x_1(t)]^4 - 2 [x_2(t)]^2 \leq 0
+        .
+\end{equation*}
+%
+and hence as $t \to \infty$, $|x(t)|_2 \to 0$ and so $x(t) \to 0$. Clearly the trivial solution is S3.
+To show that it is S1, for all $\epsilon > 0$ if $|x_0| < \epsilon$ then since the derivative of the norm
+is strictly non-increasing, we have that $|x(t)| < \epsilon$ for all $t \geq t_0$. Thus the trivial solution is
+S1 and S3 and so it is asymptotically stable.
 
 \newpage
 
@@ -178,7 +333,81 @@ hey
 \end{align*}
 
 \textit{Solution.}
-hey
+Let us write this system as
+%
+\begin{equation*}
+    \begin{pmatrix}
+        x_1^\prime \\
+        x_2^\prime
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        -2t & 0 \\
+        0 & -t
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        2 [x_1(t)]^3 x_2(t) \sin^2 t \\
+        3 x_1(t) [x_2(t)]^7 e^{-t}
+    \end{pmatrix}
+    .
+\end{equation*}
+%
+Using the notation in the course notes, we identify
+%
+\begin{align*}
+    A(t) &=
+    \begin{pmatrix}
+        -2t & 0 \\
+        0 & -t
+    \end{pmatrix},
+    \\
+    g(t, x) &=
+    \begin{pmatrix}
+        2 [x_1(t)]^3 x_2(t) \sin^2 t \\
+        3 x_1(t) [x_2(t)]^7 e^{-t}
+    \end{pmatrix}
+    .
+\end{align*}
+%
+Just by inspection we can see that the fundamental solution $\Phi(t, 0)$
+is given by
+%
+\begin{equation*}
+    \Phi(t, 0) =
+    \begin{pmatrix}
+        e^{-2t} & 0 \\
+        0 & e^{-t}
+    \end{pmatrix}
+\end{equation*}
+%
+and hence
+%
+\begin{equation*}
+    \enVert[0]{\Phi(t, 0)}_2 = e^{-t}
+    .
+\end{equation*}
+%
+Also, we have that
+%
+\begin{align*}
+    |g(t, x)|^2 &=
+        (2 x_1^3 x_2 \sin^2 t)^2
+        +
+        (3 x_1 x_2^7 e^{-t})^2
+        \\
+        &=
+        4 x_1^6 x_2^2 \sin^4 t
+        +
+        9 x_1^2 x_2^{14} e^{-2t}
+\end{align*}
+%
+When $|x| < \frac{1}{10}$, we clearly have that $|g(t, x)| \leq |x|$ for all $t \in \R^+$.
+Hence by Theorem $3.6$ in the course notes, the trivial solution is uniformly asymptotically stable.
 
 \newpage
 
@@ -192,21 +421,101 @@ hey
 (a) Find all the equilibria and discuss their stability properties.
 
 \textit{Solution.}
-hey
+To find all equilibria, we solve
+%
+\begin{align*}
+    0 &= y(t)^3 - 4 x(t), \\
+    0 &= y(t)^3 - y(t) - 3 x(t).
+\end{align*}
+%
+which has solutions
+%
+\begin{equation*}
+    (x, y) \in \cbr{(0, 0), (2, 2), (-2, -2)}
+    .
+\end{equation*}
+%
+Given that
+%
+\begin{equation*}
+    Df =
+    \begin{pmatrix}
+        -4 & 3 y^2 \\
+        -3 & 3 y^2 - 1
+    \end{pmatrix}
+    .
+\end{equation*}
+%
+Evaluating $Df$ at each of the equilibrium points we have
+%
+\begin{align*}
+    Df(0, 0) &=
+    \begin{pmatrix}
+        -4 & 0 \\
+        -3 & -1
+    \end{pmatrix}
+    ,
+    \\
+    Df(2, 2) &=
+    \begin{pmatrix}
+        -4 & 12 \\
+        -3 & 11
+    \end{pmatrix}
+    = Df(-2, -2)
+    .
+\end{align*}
+%
+These matrices have eigenvalues (in the order in which they appear above)
+%
+\begin{align*}
+    \lambda &= -1, -4, \\
+    \lambda &= 8, -1
+    .
+\end{align*}
+%
+Thus we see that $(0, 0)$ is a nonlinear sink with both eigenvalues having
+negative real parts and so is asymptotically stable, and that both
+$(2, 2)$ and $(-2, -2)$ are saddles and so are unstable.
 
 \vspace{5mm}
 
 (b) Show that the line $y = x$ is invariant under the flow of the system.
 
 \textit{Solution.}
-hey
+Notice that
+%
+\begin{equation*}
+    \frac{y^\prime}{x^\prime} = \frac{y^3 - 4x}{y^3 - y - 3x}
+    ,
+\end{equation*}
+%
+and so if $y = x$ then
+%
+\begin{equation*}
+    \frac{y^\prime}{x^\prime} = \frac{x^3 - 4x}{x^3 - x - 3x} = \frac{x^3 - 4x}{x^3 - 4x} = 1
+    ,
+\end{equation*}
+%
+which shows that the line is invariant under the flow of the system.
 
 \vspace{5mm}
 
 (c) Show that $|y(t) - x(t)| \to 0$ as $t \to \infty$.
 
 \textit{Solution.}
-there's a hint to find a differential equation for $y - x$
+Note that from our equations above,
+%
+\begin{equation*}
+    \dod{(y - x)}{t} = (y^3 - y - 3x) - (y^3 - 4x) = - (y - x)
+\end{equation*}
+%
+and so
+%
+\begin{equation*}
+    y - x = e^{-t}
+\end{equation*}
+%
+and thus $|y(t) - x(t)| = |e^{-t}| = e^{-t} \to 0$ as $t \to \infty$.
 
 \newpage
 
@@ -234,6 +543,31 @@ Show that every solution of the IVP
 exists on $[t_0, \infty)$ and converges to a constant vector as $t \to \infty$.
 
 \textit{Solution.}
-hey
+Let $\gamma(t)$ be a maximal solution of
+%
+\begin{equation*}
+    u^\prime(t) = g(t, u(t)), \quad u(t_0) = u_0
+\end{equation*}
+%
+where $u_0 \geq |x_0|$
+existing on $[t_0, \infty)$. Then according to Corollary $3.2$ of the course notes,
+we have that for any solution $x(t)$ of
+%
+\begin{equation*}
+    x^\prime(t) = f(t, x(t)), \quad x(t_0) = x_0
+    ,
+\end{equation*}
+%
+that
+%
+\begin{equation*}
+    |x(t)| \leq \gamma(t) < \infty
+\end{equation*}
+%
+and so $x(t)$ exists on $[t_0, \infty)$. In order for $g(t, u)$ to be nondecreasing in $u$
+for any fixed $t$ but still have a bounded solution, its magnitude must be decreasing in $t$ for all
+$t \geq t^*$ for some $t^* > t_0$; otherwise, solutions would grow without bound.
+Hence we must have that $|g(t, u)| \to 0$ as $t \to \infty$ and thus $|f(t, x)| \to 0$
+as $t \to \infty$. Therefore $x(t)$ must converge to a constant vector as $t \to \infty$.
 
 \end{document}
